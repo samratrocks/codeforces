@@ -1,42 +1,25 @@
-const readline = require('readline');
-const matrix = [];
-
+const readline = require('readline')
 
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
-rl.on('line', lineInput => {
-    makeMatrix(lineInput)
+rl.on('line', line => {
+    solution(line);
 });
 
-rl.on('close', () => console.log(solution(matrix)));
-
-
-function makeMatrix(line) {
-    const row = line.split(' ').map(char => Number(char));
-    matrix.push(row);
-}
-
-
-function solution(matrix) {
-// Get the matrix from the input and put it into a data structure
-// Count the minimum number needed to make the matrix beautiful
-    const index = getIndex(matrix);
-    return (Math.abs(2 - index[0]) + Math.abs(2 - index[1]));
-
-}
-
-
-// Finds and returns the index of '1'
-function getIndex(matrix) {
-    let x = 0, y = 0;
-    for (let i = 0; i < matrix.length; i++) {
-        for (let j = 0; j < matrix.length; j++) { 
-            if (matrix[i][j] === 1) {
-                return [i, j];
-            }
+function solution(name) {
+    const charMap = {};
+    for (const char of name) {
+        if (charMap[char] === undefined) {
+            charMap[char] = true;
         }
+    }
+
+    if (Object.keys(charMap).length % 2 === 0) {
+        console.log('CHAT WITH HER!');
+    } else {
+        console.log('IGNORE HIM!');
     }
 }

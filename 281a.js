@@ -4,10 +4,10 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-function solution(array) {
-    let left = 0;
-    let right = array.length - 1;
-    while (left <= right) {
-        // if ()
-    }
+rl.on('line', line => {
+    solution(line);
+});
+
+function solution(line) {
+    console.log(line[0].toUpperCase() + line.slice(1))
 }
